@@ -49,6 +49,7 @@ module Stickies
       html = %Q(<div id="#{configuration[:id]}">)
 
       Stickies::Messages.fetch(session, configuration[:key]) do |messages|
+        return "" if messages.kind_of?(Array) == false
         html << render_stickies_separate(messages, configuration)
         messages.flash
       end
