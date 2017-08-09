@@ -68,3 +68,8 @@ This will create:
 
      public/stylesheets/stickies.css
      public/javascripts/stickies.js
+
+
+## Version > 0.1.5
+
+    Edit notice_stickies layout
