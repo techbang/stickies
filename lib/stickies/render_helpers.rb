@@ -89,7 +89,6 @@ module Stickies
     private
 
     def render_notify(m, options)
-      url = m.message.match(/<a href="(.+)">/)[1]
       options[:close] = '關閉'
 
       html = %Q(
@@ -97,11 +96,11 @@ module Stickies
           <div class="notify_container">
             <div class="notify-wrapper">
               <span class="notify-icon"></span>
-              #{m.message.force_encoding("UTF-8").html_safe}
+              #{m.message.force_encoding("UTF-8")}
             </div>
             <div class="btn-wrapper">
               <div class="btn">
-                #{link_to('立即報名', url)}
+                #{m.options[:action_btn].force_encoding("UTF-8")}
               </div>
               #{render_stickie_close_area(m, options)}
             </div>
