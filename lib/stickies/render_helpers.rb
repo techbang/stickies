@@ -100,7 +100,7 @@ module Stickies
             </div>
             <div class="btn-wrapper">
               <div class="btn">
-                #{m.options[:action_btn].force_encoding("UTF-8")}
+                #{m.options[:action_btn]}
               </div>
               #{render_stickie_close_area(m, options)}
             </div>
