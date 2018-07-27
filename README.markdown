@@ -1,8 +1,11 @@
+# Stickies 0.1.5
+Custom new notify_stickies for techbang
+
 handlino-stickies
 
 This is a modified version from http://software.pmade.com/stickies
 We use jquery to let it be unobtrusive.
- 
+
 # Stickies
 
 Stickies is a plugin for Ruby on Rails that provides some easy to use yet
@@ -49,7 +52,7 @@ Gemfile
     gem "stickies", :git => "git://github.com/techbang/stickies.git"
 
 assets/stylesheets/application.css
-    
+
     //= require stickies
 
 assets/javascripts/application.js
