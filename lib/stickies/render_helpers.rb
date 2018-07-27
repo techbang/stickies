@@ -73,6 +73,8 @@ module Stickies
       html = ''
 
       messages.each do |m|
+        html << render_notify(m, options) and next if m.level == :notify
+
         html << %Q(<div class="#{m.level}_stickie" id="stickie_#{m.options[:name]}">)
         html << render_stickie_close_area(m, options) if options[:close_position] == :before
         html << m.message.force_encoding("UTF-8")
@@ -80,6 +82,31 @@ module Stickies
         html << %Q(<br style="clear:all;"/>)
         html << %Q(</div>)
       end
+
+      html
+    end
+
+    private
+
+    def render_notify(m, options)
+      options[:close] = '關閉'
+
+      html = %Q(
+        <div class="#{m.level}_stickie" id="stickie_#{m.options[:name]}">
+          <div class="notify_container">
+            <div class="notify-wrapper">
+              <span class="notify-icon"></span>
+              #{m.message.force_encoding("UTF-8")}
+            </div>
+            <div class="btn-wrapper">
+              <div class="btn">
+                #{m.options[:action_btn].force_encoding("UTF-8")}
+              </div>
+              #{render_stickie_close_area(m, options)}
+            </div>
+          </div>
+        </div>
+      )
 
       html
     end

@@ -10,10 +10,10 @@
 # distribute, sublicense, and/or sell copies of the Software, and to
 # permit persons to whom the Software is furnished to do so, subject to
 # the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -36,7 +36,7 @@ module Stickies
     def self.error (storage, message, options={})
       self.add(storage, :error, message, options)
     end
-    
+
     ################################################################################
     # Add a warning message to the current collection of messages.  Storage
     # should be a hash where all the messages can be stored, such as the Rails
@@ -62,6 +62,11 @@ module Stickies
       if RAILS_ENV == 'development'
         self.add(storage, :debug, message, options)
       end
+    end
+
+    # Add a custom notify message to the current collection of messages.
+    def self.notify(storage, message, options={})
+      self.add(storage, :notify, message, options)
     end
 
     ################################################################################
@@ -125,7 +130,7 @@ module Stickies
     # the collection so it won't be seen again.
     #
     # If you have a message that you want to keep displaying until the user
-    # dismisses it, set :flash to false.  
+    # dismisses it, set :flash to false.
     #
     # Also, if you have a message that you want to prevent from being added
     # more than once, set the :name option to a unique name for the message.
@@ -156,7 +161,7 @@ module Stickies
 
       # Force :flash to false if :remember is true
       configuration[:flash] = false if configuration[:remember]
-      
+
       # don't add if one of the see options was given, and it was already seen
       return if configuration[:seen_in] and seen?(configuration[:name], :in => configuration[:seen_in])
       return if configuration[:seen_since] and seen?(configuration[:name], :since => configuration[:seen_since])
@@ -168,7 +173,7 @@ module Stickies
       message = OpenStruct.new({
         :name    => configuration[:name],
         :level   => level,
-        :message => message, 
+        :message => message,
         :options => configuration,
       })
 
@@ -179,7 +184,7 @@ module Stickies
     ################################################################################
     # Iterate over all the messages in the given order.  If you are using
     # custom message levels, you'll need to add them to the order array.
-    def each (order=[:debug, :error, :warning, :notice], &block)
+    def each (order=[:debug, :error, :warning, :notice, :notify], &block)
       order.each {|o| m = @messages[o] and m.each(&block)}
     end
 
@@ -188,7 +193,7 @@ module Stickies
     def empty?
       @by_id.empty?
     end
-    
+
     ################################################################################
     # Remove a message from the message collection based on its unique name.
     def destroy (name, update_seen_on=true)
@@ -201,7 +206,7 @@ module Stickies
 
     ################################################################################
     # Remove all messages that have their :flash setting set to true.
-    def flash 
+    def flash
       @messages.values.each {|v| v.delete_if {|m| m.options[:flash]}}
       @by_id.delete_if {|k, v| v.first.options[:flash]}
     end
