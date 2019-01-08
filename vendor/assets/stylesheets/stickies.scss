@@ -77,9 +77,7 @@
     color: #fff;
     line-height: 1.4rem;
     text-decoration: none;
-    overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
   }
@@ -113,6 +111,18 @@
         color: #fff;
         padding: 5px;
         margin: 10px;
+      }
+    }
+
+    .cookie_policy_close_btn {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 5px 0;
+      margin: 0px 10px;
+
+      a {
+        color: #254696;
+        text-decoration: none;
       }
     }
   }
@@ -151,6 +161,10 @@
 
     .btn-wrapper {
       width: 100%;
+    }
+
+    .cookie_policy_close_btn {
+      padding-top: 4px;
     }
   }
 }
