@@ -90,6 +90,7 @@ module Stickies
 
     def render_notify(m, options)
       options[:close] = '關閉'
+      m.options[:class] ||= 'btn'
 
       html = %Q(
         <div class="#{m.level}_stickie" id="stickie_#{m.options[:name]}">
@@ -99,7 +100,7 @@ module Stickies
               #{m.message.force_encoding("UTF-8")}
             </div>
             <div class="btn-wrapper">
-              <div class="btn">
+              <div class="#{m.options[:class]}">
                 #{m.options[:action_btn]}
               </div>
               #{render_stickie_close_area(m, options)}
