@@ -48,12 +48,12 @@
   z-index: 99998;
 
   .notify_container {
-    padding: 10px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
   }
 
@@ -63,20 +63,21 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    color: #fff;
 
     .notify-icon {
       width: 35px;
       height: 35px;
       background-image: image-url("stickies/notify-icon.svg");
+      background-size: contain;
       margin-right: 10px;
     }
   }
 
   .notify-wrapper a {
-    width: calc(100% - 46px);
     color: #fff;
     line-height: 1.4rem;
-    text-decoration: none;
+    text-decoration: underline;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
@@ -117,12 +118,18 @@
     .cookie_policy_close_btn {
       background-color: #fff;
       border-radius: 16px;
-      padding: 5px 0;
+      padding: 5px 15px;
       margin: 0px 10px;
 
       a {
         color: #254696;
         text-decoration: none;
+      }
+      &:hover {
+        background-color: #254696;
+        a {
+          color: #fff;
+        }
       }
     }
   }

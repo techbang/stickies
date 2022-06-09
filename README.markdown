@@ -1,3 +1,7 @@
+# Stickies 0.1.6
+  defalut close btn removed and update style
+
+  *bunny*
 # Stickies 0.1.5
 Custom new notify_stickies for techbang
 
