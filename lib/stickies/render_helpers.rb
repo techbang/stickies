@@ -89,7 +89,6 @@ module Stickies
     private
 
     def render_notify(m, options)
-      options[:close] = '關閉'
       m.options[:class] ||= 'btn'
 
       html = %Q(
@@ -103,7 +102,6 @@ module Stickies
               <div class="#{m.options[:class]}">
                 #{m.options[:action_btn]}
               </div>
-              #{render_stickie_close_area(m, options)}
             </div>
           </div>
         </div>
