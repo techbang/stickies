@@ -1,8 +1,3 @@
-# Stickies 0.1.7
-  alias_method_chain change to alias_method
-  (cause alias_method_chain method is deprecated at rails 5.1 )
-
-  *bunny*
 # Stickies 0.1.6
   defalut close btn removed and update style
 
